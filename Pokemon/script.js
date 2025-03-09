@@ -15,7 +15,6 @@ const pokemonApi = (limit, offset) => {
       const lista = document.getElementById('pokemon-list');
 
       data.results.forEach(pokemon => {
-        console.log(pokemon);
 
 
         const pokemonHTML = document.createElement('div');
@@ -49,7 +48,6 @@ const checkScrollPosition = () => {
     if (scrollPosition >= bottomPosition - 100 && pokemonOffset < 1000) {
       pokemonOffset += pokemonLimit;
       pokemonApi(pokemonLimit, pokemonOffset);
-      console.log(pokemonOffset);
       
     }
 };
