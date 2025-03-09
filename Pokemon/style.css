@@ -1,0 +1,25 @@
+
+.pokemon-name{
+    color: red;
+}
+
+.pokemon{
+    padding: 20px;
+    height: min-content;
+    min-width: 20vh;
+    width: fit-content;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#pokemon-list{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
