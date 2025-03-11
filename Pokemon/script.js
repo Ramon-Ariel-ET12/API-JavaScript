@@ -24,12 +24,14 @@ const pokemonApi = (limit, offset) => {
           .then(response => response.json())
           .then(data => {
 
-            const pokemonLinkHref = './detalle/index.html?name=' + pokemon.name;
+            const pokemonLinkHref = './detalle/index.html?pokemon=' + pokemon.name;
             pokemonHTML.innerHTML =
-              `<img class="pokemon-sprite" alt="${pokemon.name}" src="${data.sprites.front_default}" >
-              <p class="pokemon-name">${pokemon.name}</p>
+              ` 
               <p class="pokemon-id">${data.id}</p>
-              <a href="${pokemonLinkHref}" class="pokemon-button">Ver detalles</a>`;
+              <img class="pokemon-sprite" alt="${pokemon.name}" src="${data.sprites.front_default}" >
+              <p id="${pokemon.name}" class="pokemon-name">${pokemon.name}</p>
+              <a href="${pokemonLinkHref}" class="pokemon-button">Ver detalles</a>
+              `;
 
           });
 
@@ -40,14 +42,22 @@ const pokemonApi = (limit, offset) => {
     });
 };
 
+const search = () => {
+  const pokemon = document.getElementById('search-input').value;
+  const search = document.getElementById('search');
+  
+  if (pokemon != '') {
+    document.location.href = `./detalle/index.html?pokemon=${pokemon}`;
+  }
+}
 
 const checkScrollPosition = () => {
-    const scrollPosition = window.innerHeight + window.scrollY;
-    const bottomPosition = document.documentElement.scrollHeight;
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const bottomPosition = document.documentElement.scrollHeight;
 
-    if (scrollPosition >= bottomPosition - 100 && pokemonOffset < 1000) {
-      pokemonOffset += pokemonLimit;
-      pokemonApi(pokemonLimit, pokemonOffset);
-      
-    }
+  if (scrollPosition >= bottomPosition - 100 && pokemonOffset < 1000) {
+    pokemonOffset += pokemonLimit;
+    pokemonApi(pokemonLimit, pokemonOffset);
+
+  }
 };
